@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="container">
         <Link to="/" className="brand-logo">
           {" "}
-          Mario Plan
+          My Plan App
         </Link>
         <SignedInLinks />
         <SignedOutLinks />
