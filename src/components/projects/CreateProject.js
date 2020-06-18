@@ -15,7 +15,6 @@ class CreateProject extends Component {
   };
 
   handleSubmit = (e) => {
-    debugger;
     e.preventDefault();
     this.props.createProject(this.state);
   };
@@ -38,7 +37,7 @@ class CreateProject extends Component {
             />
           </div>
           <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0">Create</button>
+            <button className="btn blue lighten-1 z-depth-0">Create</button>
           </div>
         </form>
       </div>
@@ -47,7 +46,6 @@ class CreateProject extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  debugger;
   return {
     createProject: (project) => dispatch(createProject(project)),
   };
