@@ -28,15 +28,20 @@ export const signOut = () => {
 };
 
 export const signUp = (newUser) => {
+  console.log("authActions: signUp method");
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
     const firestore = getFirestore();
-
     firebase
       .auth()
       .createUserWithEmailAndPassword(newUser.email, newUser.password)
       .then((response) => {
-        return firestore
+        console.log(
+          "authActions: adding new user to collecion, user uid: ",
+          response.user.uid
+        );
+
+        firestore
           .collection("users")
           .doc(response.user.uid)
           .set({
@@ -46,9 +51,11 @@ export const signUp = (newUser) => {
           });
       })
       .then(() => {
+        console.log("authActions: dispatching success");
         dispatch({ type: "SIGNUP_SUCCESS" });
       })
       .catch((err) => {
+        console.log("authActions: dispatching error");
         dispatch({ type: "SIGNUP_ERROR", err });
       });
   };

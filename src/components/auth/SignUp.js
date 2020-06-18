@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/actions/authActions";
@@ -19,6 +18,7 @@ class SignUp extends Component {
   };
 
   handleSubmit = (e) => {
+    console.log("SignUp: handleSubmit");
     e.preventDefault();
     this.props.signUp(this.state);
   };
@@ -59,6 +59,7 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log("SignUp: mapStateToProps");
   return {
     auth: state.firebase.auth,
     authError: state.auth.authError,
@@ -66,6 +67,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
+  console.log("SignUp: mapDispatchToProps");
   return {
     signUp: (newUser) => dispatch(signUp(newUser)),
   };
