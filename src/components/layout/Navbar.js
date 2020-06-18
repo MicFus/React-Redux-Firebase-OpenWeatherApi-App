@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
+import { connect } from "react-redux";
 
-const Navbar = () => {
+const Navbar = ({ auth }) => {
   return (
     <nav className="nav-wrapper grey darken-3">
       <div className="container">
@@ -11,11 +12,15 @@ const Navbar = () => {
           {" "}
           My Plan App
         </Link>
-        <SignedInLinks />
-        <SignedOutLinks />
+        {auth.isEmpty ? <SignedOutLinks /> : <SignedInLinks />}
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return { ...state, auth: state.firebase.auth };
+};
+
+export default connect(mapStateToProps)(Navbar);
