@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 class SignUp extends Component {
   state = {
@@ -20,6 +22,8 @@ class SignUp extends Component {
   };
 
   render() {
+    const { auth } = this.props;
+    if (auth.uid) return <Redirect to="" />;
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">
@@ -49,6 +53,10 @@ class SignUp extends Component {
   }
 }
 
-SignUp.propTypes = {};
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+  };
+};
 
-export default SignUp;
+export default connect(mapStateToProps)(SignUp);
