@@ -39,10 +39,10 @@ function DropDownMenu(props) {
             Settings
           </DropDownItem>
           <DropDownItem
-            leftIcon="X"
+            leftIcon="❓"
             onClickHandler={() => setActiveMenu("empty")}
           >
-            Second Section
+            Empty Section
           </DropDownItem>
           <li>
             <a onClick={props.signOut}>Log Out</a>
