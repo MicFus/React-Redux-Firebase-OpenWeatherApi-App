@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { ReactComponent as ArrowIcon } from "./arrow.svg";
 import { CSSTransition } from "react-transition-group";
+import { connect } from "react-redux";
+import { signOut } from "../../../store/actions/authActions";
 import DropDownItem from "./DropDownItem";
 
-function DropDownMenu() {
+function DropDownMenu(props) {
   const [activeMenu, setActiveMenu] = useState("main");
   const [menuHeight, setMenuHeight] = useState(null);
 
@@ -14,6 +16,7 @@ function DropDownMenu() {
 
   return (
     <div className="dropdown" style={{ height: menuHeight }}>
+      {/*           MAIN         */}
       <CSSTransition
         in={activeMenu === "main"}
         unmountOnExit
@@ -41,8 +44,12 @@ function DropDownMenu() {
           >
             Second Section
           </DropDownItem>
+          <li>
+            <a onClick={props.signOut}>Log Out</a>
+          </li>
         </div>
       </CSSTransition>
+      {/*           SETTINGS         */}
       <CSSTransition
         in={activeMenu === "settings"}
         unmountOnExit
@@ -61,9 +68,10 @@ function DropDownMenu() {
           <DropDownItem>Settings</DropDownItem>
           <DropDownItem>Settings</DropDownItem>
           <DropDownItem>Settings</DropDownItem>
+          <DropDownItem>Settings</DropDownItem>
         </div>
       </CSSTransition>
-
+      {/*           PROFILE         */}
       <CSSTransition
         in={activeMenu === "profile"}
         unmountOnExit
@@ -80,11 +88,9 @@ function DropDownMenu() {
           <DropDownItem>Profile</DropDownItem>
           <DropDownItem>Profile</DropDownItem>
           <DropDownItem>Profile</DropDownItem>
-          <DropDownItem>Profile</DropDownItem>
-          <DropDownItem>Profile</DropDownItem>
         </div>
       </CSSTransition>
-
+      {/*           EMPTY         */}
       <CSSTransition
         in={activeMenu === "empty"}
         unmountOnExit
@@ -104,4 +110,10 @@ function DropDownMenu() {
   );
 }
 
-export default DropDownMenu;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signOut: () => dispatch(signOut()),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(DropDownMenu);
