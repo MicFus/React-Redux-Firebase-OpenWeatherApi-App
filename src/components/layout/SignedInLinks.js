@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { signOut } from "../../store/actions/authActions";
+import DropDownMenu from "./DropDown/DropDownMenu";
+import NavItem from "./NavItem";
 
 const SignedInLinks = (props) => {
   console.log(props.profile);
@@ -14,11 +16,9 @@ const SignedInLinks = (props) => {
       <li>
         <a onClick={props.signOut}>Log Out</a>
       </li>
-      <li>
-        <NavLink to="/" className="btn btn-floating blue lighten-1">
-          {props.profile.initials}
-        </NavLink>
-      </li>
+      <NavItem profile={props.profile}>
+        <DropDownMenu />
+      </NavItem>
     </ul>
   );
 };
