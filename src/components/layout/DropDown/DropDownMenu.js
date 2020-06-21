@@ -3,6 +3,7 @@ import { ReactComponent as ArrowIcon } from "./arrow.svg";
 import { CSSTransition } from "react-transition-group";
 import { connect } from "react-redux";
 import { signOut } from "../../../store/actions/authActions";
+import { changeTheme } from "../../../store/actions/UIActions";
 import DropDownItem from "./DropDownItem";
 
 function DropDownMenu(props) {
@@ -68,7 +69,9 @@ function DropDownMenu(props) {
           <DropDownItem>Settings</DropDownItem>
           <DropDownItem>Settings</DropDownItem>
           <DropDownItem>Settings</DropDownItem>
-          <DropDownItem>Settings</DropDownItem>
+          <DropDownItem onClickHandler={props.changeTheme}>
+            ChangeTheme
+          </DropDownItem>
         </div>
       </CSSTransition>
       {/*           PROFILE         */}
@@ -85,7 +88,6 @@ function DropDownMenu(props) {
             gotoMenu="main"
             onClickHandler={() => setActiveMenu("main")}
           ></DropDownItem>
-          <DropDownItem>Profile</DropDownItem>
           <DropDownItem>Profile</DropDownItem>
           <DropDownItem>Profile</DropDownItem>
         </div>
@@ -113,6 +115,7 @@ function DropDownMenu(props) {
 const mapDispatchToProps = (dispatch) => {
   return {
     signOut: () => dispatch(signOut()),
+    changeTheme: () => dispatch(changeTheme()),
   };
 };
 

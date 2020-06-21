@@ -3,18 +3,30 @@ import { Link } from "react-router-dom";
 import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
 import { connect } from "react-redux";
+import styled from "styled-components";
 
-const Navbar = ({ auth, profile }) => {
+const Nav_Styled = styled.nav`
+  background-color: ${(props) =>
+    props.mode.darkActive ? props.mode.colors.dark2 : props.mode.colors.light};
+  color: ${(props) =>
+    props.mode.darkActive ? props.mode.colors.light : props.mode.colors.dark2};
+`;
+
+const Navbar = (props) => {
   return (
-    <nav className="nav-wrapper grey darken-3">
+    <Nav_Styled mode={props.mode}>
       <div className="container">
         <Link to="/" className="brand-logo">
           {" "}
           My Plan App
         </Link>
-        {auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />}
+        {props.auth.uid ? (
+          <SignedInLinks profile={props.profile} />
+        ) : (
+          <SignedOutLinks />
+        )}
       </div>
-    </nav>
+    </Nav_Styled>
   );
 };
 
@@ -23,6 +35,7 @@ const mapStateToProps = (state) => {
     ...state,
     auth: state.firebase.auth,
     profile: state.firebase.profile,
+    mode: state.mode,
   };
 };
 
