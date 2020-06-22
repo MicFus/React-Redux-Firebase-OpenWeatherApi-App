@@ -6,10 +6,8 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 const Nav_Styled = styled.nav`
-  background-color: ${(props) =>
-    props.mode.darkActive ? props.mode.colors.dark2 : props.mode.colors.light};
-  color: ${(props) =>
-    props.mode.darkActive ? props.mode.colors.light : props.mode.colors.dark2};
+  background-color: ${(props) => props.mode.actualColors.background};
+  color: ${(props) => props.mode.actualColors.foreground};
 `;
 
 const Navbar = (props) => {
@@ -18,7 +16,7 @@ const Navbar = (props) => {
       <div className="container">
         <Link to="/" className="brand-logo">
           {" "}
-          My Plan App
+          My Notes App
         </Link>
         {props.auth.uid ? <SignedInLinks /> : <SignedOutLinks />}
       </div>

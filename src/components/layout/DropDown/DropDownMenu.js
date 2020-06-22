@@ -33,17 +33,17 @@ function DropDownMenu(props) {
             My Profile
           </DropDownItem>
           <DropDownItem
+            leftIcon="❓"
+            onClickHandler={() => setActiveMenu("empty")}
+          >
+            Empty Section
+          </DropDownItem>
+          <DropDownItem
             leftIcon="⚙️"
             gotoMenu="settings"
             onClickHandler={() => setActiveMenu("settings")}
           >
             Settings
-          </DropDownItem>
-          <DropDownItem
-            leftIcon="❓"
-            onClickHandler={() => setActiveMenu("empty")}
-          >
-            Empty Section
           </DropDownItem>
           <li>
             <a onClick={props.signOut}>Log Out</a>

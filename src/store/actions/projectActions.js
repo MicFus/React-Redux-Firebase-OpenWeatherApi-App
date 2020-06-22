@@ -20,7 +20,6 @@ export const createProject = (project) => {
 };
 
 export const deleteProject = (id) => {
-  debugger;
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     firestore

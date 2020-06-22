@@ -1,8 +1,15 @@
 import React from "react";
+import DivStyled from "../common/DivStyled";
+import { connect } from "react-redux";
+import styled from "styled-components";
 
-const Notifications = (props) => {
+const SpanStyled = styled.span`
+  color: ${(props) => props.actualColors.foreground};
+`;
+
+const Notifications = ({ actualColors }) => {
   return (
-    <div className="card z-depth-0">
+    <DivStyled className="card z-depth-0" actualColors={actualColors}>
       <div className="card-content">
         <span className="card-title">Notifications</span>
         <ul className="notifications">
@@ -12,8 +19,14 @@ const Notifications = (props) => {
           <li>Notification</li>
         </ul>
       </div>
-    </div>
+    </DivStyled>
   );
 };
 
-export default Notifications;
+const mapStateToProps = (state) => {
+  return {
+    actualColors: state.mode.actualColors,
+  };
+};
+
+export default connect(mapStateToProps)(Notifications);

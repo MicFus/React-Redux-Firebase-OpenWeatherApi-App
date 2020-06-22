@@ -3,13 +3,20 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { deleteProject } from "../../store/actions/projectActions";
+import DivStyled from "../common/DivStyled";
+import SpanStyled from "../common/SpanStyled";
 
-const ProjectSummary = ({ deleteProject, project }) => {
+const ProjectSummary = ({ deleteProject, project, actualColors }) => {
   return (
-    <div className="card z-depth-0 project-summary">
+    <DivStyled
+      actualColors={actualColors}
+      className="card z-depth-0 project-summary"
+    >
       <Link to={"/project/" + project.id}>
         <div className="card-content grey-text text-darken-3">
-          <span className="card-title">{project.title}</span>
+          <SpanStyled className="card-title" actualColors={actualColors}>
+            {project.title}
+          </SpanStyled>
           <p>
             Posted by {project.authorFirstName} {project.authorLastName}
           </p>
@@ -18,15 +25,22 @@ const ProjectSummary = ({ deleteProject, project }) => {
           </p>
         </div>
       </Link>
-      <button
+      <span
         onClick={() => {
           deleteProject(project.id);
         }}
       >
         ❌
-      </button>
-    </div>
+      </span>
+    </DivStyled>
   );
+};
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    ownProps,
+    actualColors: state.mode.actualColors,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -35,4 +49,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(ProjectSummary);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectSummary);

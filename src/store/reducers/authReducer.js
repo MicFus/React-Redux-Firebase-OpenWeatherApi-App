@@ -1,8 +1,6 @@
-const initState = {
-  authError: null,
-};
+import initialState from "../initialState";
 
-const authReducer = (state = initState, action) => {
+const authReducer = (state = initialState.auth, action) => {
   switch (action.type) {
     case "LOGIN_ERROR":
       return { ...state, authError: "Login failed" };

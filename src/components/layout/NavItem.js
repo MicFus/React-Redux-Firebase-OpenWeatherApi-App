@@ -6,6 +6,7 @@ function NavItem(props) {
   return (
     <li className="nav-item">
       <a
+        href="#"
         className="btn btn-floating blue lighten-1"
         onClick={() => setOpen(!open)}
       >
