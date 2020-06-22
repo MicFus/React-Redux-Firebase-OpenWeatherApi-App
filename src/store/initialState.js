@@ -13,6 +13,7 @@ const initialState = {
     darkActive: true,
     actualColors: themes.darkTheme,
   },
+  weatherForecast: null,
 };
 
 export default initialState;

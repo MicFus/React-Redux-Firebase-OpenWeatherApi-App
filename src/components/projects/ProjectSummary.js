@@ -7,6 +7,7 @@ import DivStyled from "../common/DivStyled";
 import SpanStyled from "../common/SpanStyled";
 
 const ProjectSummary = ({ deleteProject, project, actualColors }) => {
+  console.log(project.createdAt);
   return (
     <DivStyled
       actualColors={actualColors}

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Notifications from "./Notifications";
+import ForecastList from "./ForecastList";
 import ProjectList from "../projects/ProjectList";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
@@ -16,7 +16,7 @@ class Dashboard extends Component {
             <ProjectList projects={this.props.projects} />
           </div>
           <div className="col s12 m5 offset-m1">
-            <Notifications />
+            <ForecastList />
           </div>
         </div>
       </div>

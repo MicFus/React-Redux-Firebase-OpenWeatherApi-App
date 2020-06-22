@@ -115,3 +115,12 @@ a {
   transform: translateX(110%);
   transition: all var(--speed) ease;
 }
+
+.outer {
+  width: 100%;
+  text-align: center;
+}
+
+.inner {
+  display: inline-block;
+}
