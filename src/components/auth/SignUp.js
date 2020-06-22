@@ -59,15 +59,14 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("SignUp: mapStateToProps");
   return {
     auth: state.firebase.auth,
+    profile: state.firebase.profile,
     authError: state.auth.authError,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  console.log("SignUp: mapDispatchToProps");
   return {
     signUp: (newUser) => dispatch(signUp(newUser)),
   };

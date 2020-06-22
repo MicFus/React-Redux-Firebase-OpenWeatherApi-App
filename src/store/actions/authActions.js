@@ -28,7 +28,6 @@ export const signOut = () => {
 };
 
 export const signUp = (newUser) => {
-  console.log("authActions: signUp method");
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
     const firestore = getFirestore();
@@ -36,11 +35,6 @@ export const signUp = (newUser) => {
       .auth()
       .createUserWithEmailAndPassword(newUser.email, newUser.password)
       .then((response) => {
-        console.log(
-          "authActions: adding new user to collecion, user uid: ",
-          response.user.uid
-        );
-
         firestore
           .collection("users")
           .doc(response.user.uid)
@@ -51,11 +45,12 @@ export const signUp = (newUser) => {
           });
       })
       .then(() => {
-        console.log("authActions: dispatching success");
-        dispatch({ type: "SIGNUP_SUCCESS" });
+        setTimeout(function () {
+          console.log("dispatched");
+          dispatch({ type: "SIGNUP_SUCCESS" });
+        }, 2000);
       })
       .catch((err) => {
-        console.log("authActions: dispatching error");
         dispatch({ type: "SIGNUP_ERROR", err });
       });
   };

@@ -18,3 +18,18 @@ export const createProject = (project) => {
       });
   };
 };
+
+export const deleteProject = (id) => {
+  debugger;
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    firestore
+      .collection("projects")
+      .doc(id)
+      .delete()
+      .then(() => dispatch({ type: "DELETE_PROJECT_SUCCESS", id }))
+      .catch((err) => {
+        dispatch({ type: "CREATE_PROJECT_ERROR", err });
+      });
+  };
+};

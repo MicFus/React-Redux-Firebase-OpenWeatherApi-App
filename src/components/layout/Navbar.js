@@ -20,11 +20,7 @@ const Navbar = (props) => {
           {" "}
           My Plan App
         </Link>
-        {props.auth.uid ? (
-          <SignedInLinks profile={props.profile} />
-        ) : (
-          <SignedOutLinks />
-        )}
+        {props.auth.uid ? <SignedInLinks /> : <SignedOutLinks />}
       </div>
     </Nav_Styled>
   );
@@ -34,7 +30,6 @@ const mapStateToProps = (state) => {
   return {
     ...state,
     auth: state.firebase.auth,
-    profile: state.firebase.profile,
     mode: state.mode,
   };
 };

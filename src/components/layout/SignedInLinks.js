@@ -1,8 +1,8 @@
 import React from "react";
 import DropDownMenu from "./DropDown/DropDownMenu";
 import NavItem from "./NavItem";
-import styled from "styled-components";
 import NavLinkStyled from "./NavLinkStyled";
+import { connect } from "react-redux";
 
 const SignedInLinks = (props) => {
   return (
@@ -19,4 +19,9 @@ const SignedInLinks = (props) => {
   );
 };
 
-export default SignedInLinks;
+const mapStateToProps = (state, ownProps) => ({
+  ...ownProps,
+  profile: state.firebase.profile,
+});
+
+export default connect(mapStateToProps)(SignedInLinks);
