@@ -1,3 +1,5 @@
+import * as actionType from "../actionTypes";
+
 export const createProject = (project) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
@@ -12,9 +14,9 @@ export const createProject = (project) => {
         authorId,
         createdAt: new Date(),
       })
-      .then(() => dispatch({ type: "CREATE_PROJECT", project }))
+      .then(() => dispatch({ type: actionType.CREATE_PROJECT, project }))
       .catch((err) => {
-        dispatch({ type: "CREATE_PROJECT_ERROR", err });
+        dispatch({ type: actionType.CREATE_PROJECT_ERROR, err });
       });
   };
 };
@@ -26,9 +28,9 @@ export const deleteProject = (id) => {
       .collection("projects")
       .doc(id)
       .delete()
-      .then(() => dispatch({ type: "DELETE_PROJECT_SUCCESS", id }))
+      .then(() => dispatch({ type: actionType.DELETE_PROJECT_SUCCESS, id }))
       .catch((err) => {
-        dispatch({ type: "CREATE_PROJECT_ERROR", err });
+        dispatch({ type: actionType.CREATE_PROJECT_ERROR, err });
       });
   };
 };

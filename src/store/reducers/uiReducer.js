@@ -1,9 +1,10 @@
 import initialState from "../initialState";
+import * as actionType from "../actionTypes";
 import { themes } from "../../design/Colors";
 
 const uiReducer = (state = initialState.ui, action) => {
   switch (action.type) {
-    case "CHANGE_THEME":
+    case actionType.CHANGE_THEME:
       console.log("theme changed");
       let actual = !state.darkActive;
 
