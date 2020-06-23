@@ -1,3 +1,12 @@
+Hi! If you want to check this app before digging into the code you can find it on:
+
+https://react-redux-firebase-openweatherapi-app.azurewebsites.net/
+
+Enjoy!
+
+
+__________________________________________________________________________________________________________
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
