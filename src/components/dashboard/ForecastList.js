@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import DivStyled from "../common/DivStyled";
 import { connect } from "react-redux";
-import { getWheaterForecast } from "../../store/actions/weatherForecastActions";
+import {
+  getWheaterForecast,
+  getWheaterForecastNextPage,
+  getWheaterForecastPrevPage,
+} from "../../store/actions/weatherForecastActions";
 import WeatherItem from "./WeatherItem";
 
 const ForecastList = (props) => {
@@ -14,14 +18,12 @@ const ForecastList = (props) => {
     props.getForecast(coordinates);
   }, [coordinates]);
 
-  function HandlePrev() {}
-  function HandleNext() {}
   return (
     <DivStyled className="card z-depth-0" actualColors={props.actualColors}>
       <div className="card-content">
         <span className="card-title">Weather in Cracow</span>
-        {props.forecasts &&
-          props.forecasts.slice(0, 5).map((forecast) => {
+        {props.forecast.nav.list &&
+          props.forecast.nav.list.slice(0, 5).map((forecast) => {
             return (
               <WeatherItem
                 imageName={forecast.weather[0].icon}
@@ -33,33 +35,44 @@ const ForecastList = (props) => {
           })}
       </div>
       <div className="outer">
-        <div className="inner">
-          <span onClick={HandlePrev} style={{ cursor: "pointer" }}>
-            ◀️
-          </span>
-        </div>
-        <div className="inner">
-          <span onClick={HandleNext} style={{ cursor: "pointer" }}>
-            ▶️
-          </span>
-        </div>
+        {props.forecast.nav.hasPrev && (
+          <div className="inner">
+            <span
+              onClick={props.getForecastPrevPage}
+              style={{ cursor: "pointer" }}
+            >
+              ◀️
+            </span>
+          </div>
+        )}
+        {props.forecast.nav.hasNext && (
+          <div className="inner">
+            <span
+              onClick={props.getForecastNextPage}
+              style={{ cursor: "pointer" }}
+            >
+              ▶️
+            </span>
+          </div>
+        )}
       </div>
     </DivStyled>
   );
 };
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
   return {
     ...ownProps,
     actualColors: state.mode.actualColors,
-    forecasts: state.weatherForecast,
+    forecast: state.weatherForecast,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getForecast: (coordinates) => dispatch(getWheaterForecast(coordinates)),
+    getForecastNextPage: () => dispatch(getWheaterForecastNextPage()),
+    getForecastPrevPage: () => dispatch(getWheaterForecastPrevPage()),
   };
 };
 

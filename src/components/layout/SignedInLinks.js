@@ -9,7 +9,7 @@ const SignedInLinks = (props) => {
     <ul className="right">
       <li>
         <NavLinkStyled to="/create" mode={props.mode}>
-          New Project
+          New Note
         </NavLinkStyled>
       </li>
       <NavItem profile={props.profile}>

@@ -13,7 +13,16 @@ const initialState = {
     darkActive: true,
     actualColors: themes.darkTheme,
   },
-  weatherForecast: null,
+  weatherForecast: {
+    list: null,
+    nav: {
+      list: null,
+      pageSize: 5,
+      pageNr: 1,
+      hasNext: false,
+      hasPrev: false,
+    },
+  },
 };
 
 export default initialState;

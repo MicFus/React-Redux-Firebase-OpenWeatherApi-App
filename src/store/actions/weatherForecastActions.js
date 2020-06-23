@@ -15,3 +15,19 @@ export const getWheaterForecast = (coordinates) => {
       });
   };
 };
+
+export const getWheaterForecastNextPage = () => {
+  return (dispatch, getState) => {
+    dispatch({
+      type: actionType.GET_FORECAST_NEXT_PAGE,
+    });
+  };
+};
+
+export const getWheaterForecastPrevPage = () => {
+  return (dispatch, getState) => {
+    dispatch({
+      type: actionType.GET_FORECAST_PREV_PAGE,
+    });
+  };
+};

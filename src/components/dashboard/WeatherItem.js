@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 
 function setImageUrl(imageName) {
-  return "http://openweathermap.org/img/wn/" + imageName + ".png";
+  return "https://openweathermap.org/img/wn/" + imageName + ".png";
 }
 
 function formatOWeather(textDate) {
