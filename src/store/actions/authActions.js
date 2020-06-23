@@ -47,10 +47,15 @@ export const signUp = (newUser) => {
           });
       })
       .then(() => {
-        setTimeout(function () {
-          console.log("dispatched");
-          dispatch({ type: actionType.SIGNUP_SUCCESS });
-        }, 2000);
+        firebase.auth().signOut();
+      })
+      .then(() =>
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(newUser.email, newUser.password)
+      )
+      .then(() => {
+        dispatch({ type: actionType.SIGNUP_SUCCESS });
       })
       .catch((err) => {
         dispatch({ type: actionType.SIGNUP_ERROR, err });
