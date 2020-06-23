@@ -2,6 +2,11 @@ Hi! If you want to check this app before digging into the code you can find it o
 
 https://react-redux-firebase-openweatherapi-app.azurewebsites.net/
 
+Do not want to signUp?
+Sign in as "Todays Visitor" using:
+Email: visitor@rrfoapp.pl
+Password: Begin!
+
 Enjoy!
 
 
