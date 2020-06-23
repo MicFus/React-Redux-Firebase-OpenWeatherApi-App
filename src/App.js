@@ -6,11 +6,13 @@ import ProjectDetails from "./components/projects/ProjectDetails";
 import CreateProject from "./components/projects/CreateProject";
 import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
+import GlobalStyles from "./globalStyles";
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
+        <GlobalStyles />
         <div className="App">
           <Navbar />
           <Switch>
