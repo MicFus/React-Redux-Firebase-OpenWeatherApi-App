@@ -1,6 +1,8 @@
 
 ## Hi!
 
+### Before you run this code set firebase configuration in src/config/fbconfig.js file.
+
 If you want to check this app before digging into the code you can find it on:
 
 https://react-redux-firebase-openweatherapi-app.azurewebsites.net/
